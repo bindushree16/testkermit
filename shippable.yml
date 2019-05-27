@@ -1,5 +1,5 @@
 resources:
-  - name: img
+  - name: imgs
     type: image
     imageName: shippabledocker/u16phpall
     configuration:
@@ -9,7 +9,7 @@ resources:
  
       
 pipelines:
-  - name: pipe12
+  - name: pipeline
     steps:
       - name: s1
         type: bash
@@ -18,13 +18,13 @@ pipelines:
             - printenv
             - write_output img imageTag=$STEP_ID
         outputResources:
-          - img
+          - imgs
 
       - name: s2
         type: bash
         triggeredBy:
           resources:
-            - img
+            - imgs
         execution:
           onExecute:
             - echo $res_img_imageTag 
