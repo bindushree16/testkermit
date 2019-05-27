@@ -1,0 +1,30 @@
+resources:
+  - name: img
+    type: image
+    imageName: shippabledocker/u16phpall
+    configuration:
+      integrationName: dockerInt
+    initialVersion:
+      imageTag: test5.6
+ 
+      
+pipelines:
+  - name: pipe12
+    steps:
+      - name: s1
+        type: bash
+        execution:
+          onExecute:
+            - printenv
+            - write_output img imageTag=$STEP_ID
+        outputResources:
+          - img
+
+      - name: s2
+        type: bash
+        triggeredBy:
+          resources:
+            - img
+        execution:
+          onExecute:
+            - echo $res_img_imageTag 
