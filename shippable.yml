@@ -27,13 +27,6 @@ pipelines:
             - imgs
         execution:
           onExecute:
-            - echo $res_imgs_imageTag t
-            
-      - name: s4
-        type: bash
-        requers:
-          resources:
-            - imgs 
-        execution:
+            - echo $res_imgs_imageTag 
         
         
