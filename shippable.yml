@@ -16,13 +16,13 @@ pipelines:
         execution:
           onExecute:
             - printenv
-#             - write_output imgs imageTag=$STEP_ID
+            - write_output imgs imageTag=$STEP_ID
         outputResources:
           - imgs
 
       - name: s2
         type: bash
-        triggeredBy:
+        requires:
           resources:
             - imgs
         execution:
