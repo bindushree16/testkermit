@@ -1,3 +1,5 @@
+# for resources image 
+
 resources:
   - name: imgs
     type: image
