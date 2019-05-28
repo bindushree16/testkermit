@@ -6,7 +6,7 @@ resources:
     imageName: shippabledocker/u16phpall
     configuration:
       integrationName: dockerInt
-    initialVersion:
+    version:
       imageTag: test5.6
  
       
