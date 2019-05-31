@@ -15,7 +15,7 @@ pipelines:
     steps:
       - name: s1
         type: bash
-        triggeredBy:
+        requires:
           resources:
             - imgs
         execution:
