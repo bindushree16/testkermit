@@ -3,7 +3,7 @@
 resources:
   - name: imgs
     type: image
-    imageName: shippabledocker/u16phpall
+    imageName: drydock/u16phpall
     configuration:
       integrationName: dockerInt
     version:
