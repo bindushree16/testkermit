@@ -15,6 +15,9 @@ pipelines:
     steps:
       - name: s1
         type: bash
+        triggeredBy:
+          resources:
+            - imgs
         execution:
           onExecute:
             - printenv
