@@ -31,4 +31,14 @@ pipelines:
           onExecute:
             - echo $res_imgs_imageTag 
         
+      - name: s3
+        type: bash
+        requires:
+          resources:
+            - imgs
+        execution:
+          onExecute:
+            - echo $res_imgs_imageTag 
         
+        
+ 
