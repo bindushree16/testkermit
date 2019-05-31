@@ -16,9 +16,9 @@ pipelines:
       - name: s1
         type: bash
 #         triggeredBy:
-#         requires:
-#           resources:
-#             - imgs
+        requires:
+          resources:
+            - imgs
         execution:
           onExecute:
             - printenv
