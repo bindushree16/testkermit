@@ -7,7 +7,7 @@ resources:
     configuration:
       integrationName: dockerInt
     version:
-      imageTag: test5.6
+      imageTag: master
  
       
 pipelines:
