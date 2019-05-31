@@ -22,8 +22,8 @@ pipelines:
           onExecute:
             - printenv
             - write_output imgs imageTag=$STEP_ID
-        outputResources:
-          - imgs
+#         outputResources:
+#           - imgs
 
       - name: s2
         type: bash
