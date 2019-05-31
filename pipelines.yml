@@ -15,10 +15,10 @@ pipelines:
     steps:
       - name: s1
         type: bash
-        triggeredBy:
+#         triggeredBy:
 #         requires:
-          resources:
-            - imgs
+#           resources:
+#             - imgs
         execution:
           onExecute:
             - printenv
