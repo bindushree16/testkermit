@@ -22,7 +22,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-            - write_output imgs imageTag=$STEP_ID
+            - write_output imgs env1=key  # imageTag=$STEP_ID
         outputResources:
           - imgs
 
@@ -33,7 +33,9 @@ pipelines:
             - imgs
         execution:
           onExecute:
-            - echo $res_imgs_imageTag 
+             - echo $env1 
+#             - echo $res_imgs_imageTag 
+            
         
 #       - name: s3
 #         type: bash
