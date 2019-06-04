@@ -28,7 +28,7 @@ pipelines:
 
       - name: s2
         type: bash
-        requires:
+        triggeredBy:
           resources:
             - imgs
         execution:
