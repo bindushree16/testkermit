@@ -5,7 +5,7 @@ resources:
     type: Image
     configuration:
        registry: bindu_dockerHub
-       imageName: drydock/u18node
+       imageName: drydock/u16node
        imageTag: master 
        autoPull: <boolean>  # default false
        
