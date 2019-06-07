@@ -2,37 +2,73 @@
 
 resources:
   - name: imgs
-    type: image
-    imageName: drydock/u18node #shippabledocker/u16phpall
+    type: Image
     configuration:
-      integrationName: dockerInt
-    version:
-      imageTag: master
- 
-      
+       registry: bindu_dockerHub
+       imageName: drydock/u18node
+       imageTag: master 
+       autoPull: <boolean>  # default false
+       
 pipelines:
   - name: pipeline
     steps:
       - name: s1
         type: bash
-#         triggeredBy:
-#         requires:
-#           resources:
-#             - imgs
-        execution:
-          onExecute:
-            - printenv
-            - write_output imgs env1=key  # imageTag=$STEP_ID
-        outputResources:
-          - imgs
-
-      - name: s2
-        type: bash
+        setup:
+          environmentVariables:
+            normal:
+              ENV1: value1
+          runtime:            
+            type: image
+            image:
+              custom:
+                name: drydock/u16node
+                tag: master
+                options: ""   
+#           runtime:            
+#             type: image
+#             image:
+#               auto:
+#                 language: nodejs
+#                 versions: 
+#                   - 10.15.3     
         triggeredBy:
           resources:
             - imgs
         execution:
-          onExecute:
+          onStart:
+            - printenv
+          onExecute: 
+             - printenv
+             - test $ENV1=value1
+             - echo $ENV1=value1 
+             - switch_env nodejs 8.16.0
+             - printenv  
+ 
+      
+# pipelines:
+#   - name: pipeline
+#     steps:
+#       - name: s1
+#         type: bash
+# #         triggeredBy:
+# #         requires:
+# #           resources:
+# #             - imgs
+#         execution:
+#           onExecute:
+#             - printenv
+#             - write_output imgs env1=key  # imageTag=$STEP_ID
+#         outputResources:
+#           - imgs
+
+#       - name: s2
+#         type: bash
+#         triggeredBy:
+#           resources:
+#             - imgs
+#         execution:
+#           onExecute:
              - echo $env1 
 #             - echo $res_imgs_imageTag 
             
