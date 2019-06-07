@@ -12,26 +12,12 @@ resources:
 pipelines:
   - name: pipeline
     steps:
-      - name: s1
+      - name: step1
         type: bash
         setup:
           environmentVariables:
             normal:
-              ENV1: value1
-          runtime:            
-            type: image
-            image:
-              custom:
-                name: drydock/u16node
-                tag: master
-                options: ""   
-#           runtime:            
-#             type: image
-#             image:
-#               auto:
-#                 language: nodejs
-#                 versions: 
-#                   - 10.15.3     
+              ENV1: value1     
         triggeredBy:
           resources:
             - imgs
@@ -41,10 +27,27 @@ pipelines:
           onExecute: 
              - printenv
              - test $ENV1=value1
-             - echo $ENV1=value1 
-             - switch_env nodejs 8.16.0
-             - printenv  
- 
+             - echo $ENV1=value1
+             
+      - name: step2
+        type: bash
+        triggeredBy:
+          steps:
+            - step1
+          resources:
+            - imgs
+        execution:
+          onStart:
+            - printenv
+            - echo "starting now"
+          onExecute:
+            - printenv
+            - echo $env1=val1
+            - test $env1=val1    
+            
+            
+            
+# ------------------------- "outputResources" ------------------            
       
 # pipelines:
 #   - name: pipeline
@@ -69,7 +72,7 @@ pipelines:
 #             - imgs
 #         execution:
 #           onExecute:
-             - echo $env1 
+#              - echo $env1 
 #             - echo $res_imgs_imageTag 
             
         
